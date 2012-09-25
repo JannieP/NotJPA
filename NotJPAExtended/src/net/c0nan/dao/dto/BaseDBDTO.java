@@ -5,7 +5,7 @@ import java.io.Serializable;
 import net.c0nan.dao.dto.DBDTO;
 
 
-public class SharedDBDTO extends DBDTO implements Serializable{
+public class BaseDBDTO extends DBDTO implements Serializable{
 
 	/**
 	 * 

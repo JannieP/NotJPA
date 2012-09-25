@@ -8,6 +8,9 @@ public class NotJPAException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
+	public NotJPAException(String string,Throwable e) {
+		super(string,e);
+	}
 	public NotJPAException(String string) {
 		super(string);
 	}

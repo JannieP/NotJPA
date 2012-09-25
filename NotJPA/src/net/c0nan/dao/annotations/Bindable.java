@@ -12,18 +12,14 @@ import java.lang.annotation.Target;
  * - DBMS - this is to identify which DBMS connection to use when executing the SQL
  * - Schema - Needed mostly for where the schema is not set up on the server  
  * - Table - The ACTUAL table name that this DBDTO class represents, the SQL will be based on this
- * 
- * 
  */
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Bindable {
 	
-	 public enum DBMS{DB01,DB02;}
-	 
 	 public String Schema() default "";
 	 public String Table();
-	 public DBMS DBMS();
+	 public Class<?> ConnectionManager();
 
 }

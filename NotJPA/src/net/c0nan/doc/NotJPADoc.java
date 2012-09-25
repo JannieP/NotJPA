@@ -5,11 +5,11 @@ public class NotJPADoc {
 	/**
 	 * Project NotJPAExtended - contains extended template classes
 	 * ---------------------------------
-	 * public class SharedDBDTO extends DBDTO implements Serializable
+	 * public class BaseDBDTO extends DBDTO implements Serializable
 	 * public class PagingDTO implements Serializable,Cloneable
-	 * public class SharedDTO extends PagingDTO implements Serializable,Cloneable
-	 * public interface SharedInterface<A extends SharedDTO>
-	 * public abstract class SharedBean<A extends SharedDTO,B extends SharedDBDTO> implements SharedServiceInterface<A>
+	 * public class BaseDTO extends PagingDTO implements Serializable,Cloneable
+	 * public interface SharedInterface<A extends BaseDTO>
+	 * public abstract class SharedBean<A extends BaseDTO,B extends BaseDBDTO> implements SharedInterface<A>
 	 * ---------------------------------
 	 * 
 	 * How to Use NotJPA Framework
@@ -24,7 +24,7 @@ public class NotJPADoc {
 		@NamedQuery(Name="query2", Query="select count(*) as CNT from SC1.TABLE1 where AVALUE = ':AV1' and NVALUE=:NV1"),
 		})
 @Bindable(Table = "TABLE1",Schema="SC1", DBMS = Bindable.DBMS.DB02)
-public class table1DBDTO  extends SharedDBDTO implements Serializable{
+public class table1DBDTO  extends BaseDBDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -51,7 +51,7 @@ public class table1DBDTO  extends SharedDBDTO implements Serializable{
 	 * Create a DTO Class in your EJBClient project
 	 * 
 	 * 
-public class table1DTO  extends SharedDTO implements Serializable{
+public class table1DTO  extends BaseDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	

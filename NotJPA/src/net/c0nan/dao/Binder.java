@@ -399,17 +399,26 @@ public class Binder<A> {
 		Class<?> mainclazz = destination.getClass();
 		Field[] mainfields = getFields(mainclazz,null);
 		String mapto ="";
+		int index = 0;
 
 		for (Field field : mainfields) {
+			
 			DBField daofield = field.getAnnotation(DBField.class);
 			if (daofield == null)
 				continue;
+			DBKey dbkey = field.getAnnotation(DBKey.class);
+			if (dbkey == null)
+				continue;
+			
+			index++;
 			mapto = daofield.MapTo();
 			if (mapto.isEmpty()) {
 				mapto = field.getName();
 			}
 			if (values.containsKey(mapto)){
 				setFieldValue(mainclazz, field,destination ,values.get(mapto));
+			}else if (values.containsKey(new Integer(index).toString())){
+				setFieldValue(mainclazz, field,destination ,values.get(new Integer(index).toString()));
 			}
 		}
 	}

@@ -1,0 +1,6 @@
+----------------------------------------------------------------
+2012-09-25 09:19:27.591 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.3.3.1 - (965719): instance c013800d-0139-fcb9-5309-00000018cb28 
+on database directory E:\workspace\wsrp\jhpworkspace\NotJPA\NotJPAExample\myDB   with class loader sun.misc.Launcher$AppClassLoader@6aa06aa
+
+Database Class Loader started - derby.database.classpath=''

@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import net.c0nan.beanutils.BeanUtils;
 import net.c0nan.dao.Manager;
-import net.c0nan.dao.dto.SharedDBDTO;
+import net.c0nan.dao.dto.BaseDBDTO;
 import net.c0nan.dao.exception.NotJPAClientException;
 import net.c0nan.dao.exception.NotJPAExceptionNoDataChanged;
 import net.c0nan.dao.exception.NotJPAExceptionNoDataFound;
@@ -17,19 +17,18 @@ import net.c0nan.service.SharedInterface;
 
 
 
-public abstract class SharedBean<A extends BaseDTO,B extends SharedDBDTO> implements SharedInterface<A>{
+public abstract class SharedBean<A extends BaseDTO,B extends BaseDBDTO> implements SharedInterface<A>{
 
 	Logger logger = Logger.getLogger(SharedBean.class.getName());
 	
 	@SuppressWarnings("unchecked")
-	public Class<B> createBLocal(){
+	protected Class<B> createBLocal(){
 		Class<B> clazz = ((Class<B>)((ParameterizedType)this.getClass().getGenericSuperclass()).getActualTypeArguments()[1]);  
 		return clazz;
 	}
 	
-	public Manager<B> daoManager = new Manager<B>(createBLocal());
+	public Manager<B> daoManager = daoManager = new Manager<B>(createBLocal());	
 	
-
 	@Deprecated
 	@Override
 	public List<A> find(A dto){
