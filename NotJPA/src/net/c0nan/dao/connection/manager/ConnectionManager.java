@@ -29,6 +29,7 @@ public abstract class ConnectionManager {
 	protected String passWord = null;
 	protected String jndi = null;
 	protected DataSource dataSource = null;
+	protected ConnectionManager fallCackConnectionManager = null;
 
 	public ConnectionManager(String jndi) {
 		this.jndi = jndi;
@@ -113,13 +114,13 @@ public abstract class ConnectionManager {
 			connection = DriverManager.getConnection(this.connnectionURL, properties);
 
 		} catch (IllegalAccessException e) {
-			logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
+			fallback(e);
 		} catch (InstantiationException e) {
-			logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
+			fallback(e);
 		} catch (ClassNotFoundException e) {
-			logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
+			fallback(e);
 		} catch (SQLException e) {
-			logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
+			fallback(e);
 		}
 	}
 
@@ -149,4 +150,17 @@ public abstract class ConnectionManager {
 		}
 
 	}
+	
+	private void fallback(Throwable e){
+		if (fallCackConnectionManager != null){
+			logger.log(Level.FINE, "Connection Failed - Attempting Fallback");
+			try {
+				connection = fallCackConnectionManager.getConnection();
+			} catch (NotJPAException e1) {
+				logger.log(Level.SEVERE, e.getLocalizedMessage(), e1);
+			}
+		}else{
+			logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
+		}
+	};
 }
