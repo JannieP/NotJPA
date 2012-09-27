@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="E:/workspace/wsrp/jhpworkspace/NotJPA/db/derbyclient.jar"/>
-	<classpathentry kind="lib" path="E:/workspace/wsrp/jhpworkspace/NotJPA/db/derby.jar"/>
+	<classpathentry kind="lib" path="../db/derbyclient.jar"/>
+	<classpathentry kind="lib" path="../db/derby.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/NotJPA"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/NotJPAExtended"/>
 	<classpathentry kind="output" path="bin"/>
